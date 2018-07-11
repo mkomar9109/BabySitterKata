@@ -34,5 +34,10 @@ namespace BabySitterNameSpace
             }
             return newTime;
         }
+
+        public int CalculateNightlyRate(string startTime, string endTime, string bedTime)
+        {
+            return 0;
+        }
     }
 }

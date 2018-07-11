@@ -43,6 +43,13 @@ namespace BabySitterTestNameSpace
             bool validTimes = obj.ValidateTimes("5:00pm", "5:00am", "9:00pm");
             Assert.AreEqual(false, validTimes);
         }
-  
+
+        [TestMethod]
+        public void ValidateCalculateNightlyRateReturnsInteger()
+        {
+            int total = obj.CalculateNightlyRate("5:00pm", "1:00am", "9:00pm");
+            Assert.AreEqual(0,total);
+        }
+
     }
 }
