@@ -13,7 +13,6 @@ namespace BabySitterNameSpace
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
             minStartTime = minStartTime.AddDays(-1);
             DateTime maxEndTime = Convert.ToDateTime("4:00AM");
-            
             DateTime start = Convert.ToDateTime(startTime);
             if (startTime.ToUpper().Contains("PM"))
             {
@@ -30,12 +29,8 @@ namespace BabySitterNameSpace
                 bed = bed.AddDays(-1);
             }
 
-            if (start >= minStartTime && end <= maxEndTime)
+            if (start >= minStartTime && end <= maxEndTime && (bed >= start && bed <= end))
             {
-                if (bed >= start && bed <= end)
-                {
-                    return true;
-                }
                 return true;
             }          
             else 
