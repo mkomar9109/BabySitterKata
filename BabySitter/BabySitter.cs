@@ -29,7 +29,7 @@ namespace BabySitterNameSpace
                 bed = bed.AddDays(-1);
             }
 
-            if (start >= minStartTime && end <= maxEndTime && (bed >= start && bed <= end))
+            if (start >= minStartTime && end <= maxEndTime)
             {
                 return true;
             }          

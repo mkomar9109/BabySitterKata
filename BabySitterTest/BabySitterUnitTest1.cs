@@ -30,11 +30,18 @@ namespace BabySitterTestNameSpace
             Assert.AreEqual(true, validTimes);
         }
 
-        [TestMethod]
-        public void ValidateBedTimeisBetweenStartAndStopTimeReturnTrue()
+         [TestMethod]
+        public void ValidateStartTimeBeforeFiveReturnsFalse()
         {
-            bool validTimes = obj.ValidateTimes("6:00pm", "4:00am", "9:00pm");
-            Assert.AreEqual(true, validTimes);
+            bool validTimes = obj.ValidateTimes("4:00pm", "4:00am", "9:00pm");
+            Assert.AreEqual(false, validTimes);
+        }
+
+        [TestMethod]
+        public void ValidateStopTimeAfterFourReturnsFalse()
+        {
+            bool validTimes = obj.ValidateTimes("5:00pm", "5:00am", "9:00pm");
+            Assert.AreEqual(false, validTimes);
         }
 
     }
