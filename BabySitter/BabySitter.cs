@@ -8,8 +8,13 @@ namespace BabySitterNameSpace
 {
     public class BabySitter
     {
+        public const int startToBedRate = 12;
+        public const int bedToMidnightRate = 8;
+        public const int midnightToEndRate = 16;
+
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
+            //Add check for null or empty string
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
             minStartTime = minStartTime.AddDays(-1);
             DateTime maxEndTime = Convert.ToDateTime("4:00AM");
@@ -37,7 +42,19 @@ namespace BabySitterNameSpace
 
         public int CalculateNightlyRate(string startTime, string endTime, string bedTime)
         {
-            return 0;
+            DateTime start = CreateDateTime(startTime);
+            DateTime end = CreateDateTime(endTime);
+            DateTime bed = CreateDateTime(bedTime);
+            //calculate start to bedtime rate
+            TimeSpan startToBedHrs = bed - start;
+            int startToBedTotal = (int)startToBedHrs.TotalHours;
+            startToBedTotal = startToBedTotal * startToBedRate;
+            
+            //caluculate bedtime to midnight rate (or end rate)
+
+            //calculate midnight to end rate (if applicable)
+
+            return startToBedTotal;
         }
     }
 }
