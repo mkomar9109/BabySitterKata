@@ -58,7 +58,7 @@ namespace BabySitterNameSpace
                     return total + CalculateRateTotal(midnight, end, midnightToEndRate);
                 }
                 else  
-                    return total + CalculateRateTotal(bed, end, startToBedRate);
+                    return total + CalculateRateTotal(bed, end, bedToMidnightRate);
              }
             else if (midnight < end)
             {

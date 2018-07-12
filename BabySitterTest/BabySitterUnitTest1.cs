@@ -80,5 +80,12 @@ namespace BabySitterTestNameSpace
             Assert.AreEqual(88,total);
         }
 
+        [TestMethod]
+        public void ValidateCalculateNightlyRateReturnsIntegerWhenBedTimeIsIncludedAndEndTimeIsBeforeMidnight()
+        {
+            int total = obj.CalculateNightlyRate("5:00pm", "11:00pm", "9:00pm");
+            Assert.AreEqual(64, total);
+        }
+
     }
 }
