@@ -14,7 +14,7 @@ namespace BabySitterNameSpace
 
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
-            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime))
+            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime) || String.IsNullOrEmpty(bedTime))
                   return false;
 
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
@@ -34,9 +34,10 @@ namespace BabySitterNameSpace
         public DateTime CreateDateTime(string time)
         {
             DateTime newTime = Convert.ToDateTime(time);
-            if(time.ToUpper().Contains("PM"))
+            if (time.ToUpper().Contains("PM"))
             {
                 newTime = newTime.AddDays(-1);
+                    
             }
             return newTime;
         }
@@ -49,23 +50,23 @@ namespace BabySitterNameSpace
             DateTime bed = CreateDateTime(bedTime);
             DateTime midnight = Convert.ToDateTime("12:00AM");
 
-            if( !String.IsNullOrEmpty(bedTime) && start <= bed  && bed <= midnight)
+            if (start <= bed && bed <= midnight)
             {
                 total = CalculateRateTotal(start, bed, startToBedRate);
-                if (midnight < end) 
+                if (midnight < end)
                 {
                     total += CalculateRateTotal(bed, midnight, bedToMidnightRate);
                     return total + CalculateRateTotal(midnight, end, midnightToEndRate);
                 }
-                else  
+                else
                     return total + CalculateRateTotal(bed, end, bedToMidnightRate);
-             }
+            }
             else if (midnight < end)
             {
                 total = CalculateRateTotal(start, midnight, startToBedRate);
                 return total + CalculateRateTotal(midnight, end, midnightToEndRate);
             }
-            else 
+            else
                 return CalculateRateTotal(start, end, startToBedRate);
         }
 

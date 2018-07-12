@@ -87,5 +87,21 @@ namespace BabySitterTestNameSpace
             Assert.AreEqual(64, total);
         }
 
+        [TestMethod]
+        public void ValidateCalculateNightlyRateReturnsIntegerWhenBedTimeIsNotBetweenStartAndEndTimeAndEndTimeGreaterThanMidnight()
+        {
+            int total = obj.CalculateNightlyRate("5:00pm", "1:00am", "2:00am");
+            Assert.AreEqual(100, total);
+        }
+
+        [TestMethod]
+        public void ValidateCalculateNightlyRateReturnsIntegerWhenBedTimeIsNotBetweenStartAndEndTimeAndEndTimeIsLessThanMidnight()
+        {
+            int total = obj.CalculateNightlyRate("5:00pm", "11:00pm", "4:00pm");
+            Assert.AreEqual(72, total);
+        }
+
+
+
     }
 }
