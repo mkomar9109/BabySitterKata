@@ -14,15 +14,14 @@ namespace BabySitterNameSpace
 
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
-            //Add check for null or empty string
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
             minStartTime = minStartTime.AddDays(-1);
             DateTime maxEndTime = Convert.ToDateTime("4:00AM");
             DateTime start = CreateDateTime(startTime);
             DateTime end = CreateDateTime(endTime);
-            DateTime bed = CreateDateTime(bedTime);
 
-            if (start >= minStartTime && end <= maxEndTime)
+            if (! String.IsNullOrEmpty(startTime) && !String.IsNullOrEmpty(startTime)
+                && start >= minStartTime && end <= maxEndTime)
             {
                 return true;
             }          
@@ -42,19 +41,38 @@ namespace BabySitterNameSpace
 
         public int CalculateNightlyRate(string startTime, string endTime, string bedTime)
         {
+            int total = 0;
             DateTime start = CreateDateTime(startTime);
             DateTime end = CreateDateTime(endTime);
             DateTime bed = CreateDateTime(bedTime);
-            //calculate start to bedtime rate
-            TimeSpan startToBedHrs = bed - start;
-            int startToBedTotal = (int)startToBedHrs.TotalHours;
-            startToBedTotal = startToBedTotal * startToBedRate;
-            
-            //caluculate bedtime to midnight rate (or end rate)
+            DateTime midnight = Convert.ToDateTime("12:00AM");
 
-            //calculate midnight to end rate (if applicable)
+            if( !String.IsNullOrEmpty(bedTime) && start <= bed  && bed <= midnight)
+            {
+                total = CalculateRateTotal(start, bed, startToBedRate);
+                if (midnight < end) 
+                {
+                    total += CalculateRateTotal(bed, midnight, bedToMidnightRate);
+                    return total + CalculateRateTotal(midnight, end, midnightToEndRate);
+                }
+                else  
+                    return total + CalculateRateTotal(bed, end, startToBedRate);
+             }
+            else if (midnight < end)
+            {
+                total = CalculateRateTotal(start, midnight, startToBedRate);
+                return total + CalculateRateTotal(midnight, end, midnightToEndRate);
+            }
+            else 
+                return CalculateRateTotal(start, end, startToBedRate);
+        }
 
-            return startToBedTotal;
+        public int CalculateRateTotal(DateTime start, DateTime End, int rate)
+        {
+            TimeSpan hrs = End - start;
+            int total = (int)hrs.TotalHours;
+            total = total * rate;
+            return total;
         }
     }
 }

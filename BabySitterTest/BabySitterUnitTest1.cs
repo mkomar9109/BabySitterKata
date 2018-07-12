@@ -48,7 +48,7 @@ namespace BabySitterTestNameSpace
         public void ValidateCalculateNightlyRateReturnsInteger()
         {
             int total = obj.CalculateNightlyRate("5:00pm", "1:00am", "9:00pm");
-            Assert.AreEqual(48,total);
+            Assert.AreEqual(88,total);
         }
 
     }
