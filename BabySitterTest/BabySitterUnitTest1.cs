@@ -101,6 +101,13 @@ namespace BabySitterTestNameSpace
             Assert.AreEqual(72, total);
         }
 
+        [TestMethod]
+        public void ValidatePartialHours()
+        {
+            int total = obj.CalculateNightlyRate("5:30pm", "11:00pm", "3:30pm");
+            Assert.AreEqual(60, total);
+        }
+
 
 
     }

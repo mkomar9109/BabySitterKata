@@ -44,6 +44,9 @@ namespace BabySitterNameSpace
 
         public int CalculateNightlyRate(string startTime, string endTime, string bedTime)
         {
+            bool isValid = ValidateTimes(startTime, endTime, bedTime);
+            if(!isValid)
+             return 0; 
             int total = 0;
             DateTime start = CreateDateTime(startTime);
             DateTime end = CreateDateTime(endTime);
