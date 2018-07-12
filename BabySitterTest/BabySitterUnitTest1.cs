@@ -45,6 +45,35 @@ namespace BabySitterTestNameSpace
         }
 
         [TestMethod]
+        public void ValidateNullStopTimeReturnsFalse()
+        {
+            bool validTimes = obj.ValidateTimes("5:00pm", null, "9:00pm");
+            Assert.AreEqual(false, validTimes);
+        }
+
+        [TestMethod]
+        public void ValidateEmptyStopTimeReturnsFalse()
+        {
+            bool validTimes = obj.ValidateTimes("5:00pm", "", "9:00pm");
+            Assert.AreEqual(false, validTimes);
+        }
+
+        [TestMethod]
+        public void ValidateNullStartTimeReturnsFalse()
+        {
+            bool validTimes = obj.ValidateTimes(null, "3:00am", "9:00pm");
+            Assert.AreEqual(false, validTimes);
+        }
+
+        [TestMethod]
+        public void ValidateEmptyStartTimeReturnsFalse()
+        {
+            bool validTimes = obj.ValidateTimes("", "3:00am", "9:00pm");
+            Assert.AreEqual(false, validTimes);
+        }
+
+
+        [TestMethod]
         public void ValidateCalculateNightlyRateReturnsInteger()
         {
             int total = obj.CalculateNightlyRate("5:00pm", "1:00am", "9:00pm");

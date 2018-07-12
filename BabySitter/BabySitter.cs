@@ -14,14 +14,16 @@ namespace BabySitterNameSpace
 
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
+            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime))
+                  return false;
+
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
             minStartTime = minStartTime.AddDays(-1);
             DateTime maxEndTime = Convert.ToDateTime("4:00AM");
             DateTime start = CreateDateTime(startTime);
             DateTime end = CreateDateTime(endTime);
-
-            if (! String.IsNullOrEmpty(startTime) && !String.IsNullOrEmpty(startTime)
-                && start >= minStartTime && end <= maxEndTime)
+           
+            if( start >= minStartTime && end <= maxEndTime)
             {
                 return true;
             }          
