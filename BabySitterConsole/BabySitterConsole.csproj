@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ConsoleApp\BabySitterConsole.exe.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BabySitter\BabySitter.csproj">
@@ -55,7 +56,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BabySitterConsole.exe" />
+    <Content Include="ConsoleApp\BabySitter.dll" />
+    <Content Include="ConsoleApp\BabySitter.pdb" />
+    <Content Include="ConsoleApp\BabySitterConsole.exe" />
+    <Content Include="ConsoleApp\BabySitterConsole.pdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
