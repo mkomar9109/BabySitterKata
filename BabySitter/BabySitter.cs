@@ -15,7 +15,7 @@ namespace BabySitterNameSpace
 
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
-            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime) || string.IsNullOrEmpty(endTime) )
+            if (!ValidFormat(startTime) || !ValidFormat(endTime) || !ValidFormat(bedTime))
                 return false;
 
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
@@ -35,10 +35,16 @@ namespace BabySitterNameSpace
         public bool ValidFormat(string time)
         {
             Regex expression = new Regex(@"\d{1,2}\:\d{2}\w{1}\w");
-            Match match = expression.Match(time);
-            if (match.Success && !String.IsNullOrEmpty(time))
+            Match match;
+            if (!String.IsNullOrEmpty(time))
             {
-                return true;
+                match = expression.Match(time);
+                if (match.Success)
+                {
+                    return true;
+                }
+                else
+                    return false;
             }
             else
                 return false;
