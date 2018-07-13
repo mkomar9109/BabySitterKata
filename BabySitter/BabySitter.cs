@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace BabySitterNameSpace
 {
@@ -14,8 +15,8 @@ namespace BabySitterNameSpace
 
         public bool ValidateTimes(string startTime, string endTime, string bedTime)
         {
-            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime) || String.IsNullOrEmpty(bedTime))
-                  return false;
+            if (String.IsNullOrEmpty(startTime) || String.IsNullOrEmpty(endTime) || string.IsNullOrEmpty(endTime) )
+                return false;
 
             DateTime minStartTime = Convert.ToDateTime("5:00PM");
             minStartTime = minStartTime.AddDays(-1);
@@ -29,6 +30,18 @@ namespace BabySitterNameSpace
             }          
             else 
                 return false;        
+        }
+
+        public bool ValidFormat(string time)
+        {
+            Regex expression = new Regex(@"\d{1,2}\:\d{2}\w{1}\w");
+            Match match = expression.Match(time);
+            if (match.Success && !String.IsNullOrEmpty(time))
+            {
+                return true;
+            }
+            else
+                return false;
         }
 
         public DateTime CreateDateTime(string time)
