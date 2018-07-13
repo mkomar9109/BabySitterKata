@@ -22,6 +22,12 @@ The Kata contains 3 projects:
 ### Buliding and Running Tests
 
 I've included a console application in this Kata that you can use to test the BabySitter class code.
+The executable can be found in the BabySitterConsole folder: 
+* BabySitterConsole\BabySitterConsole.exe
+
+Click on the BabySitterConsole.exe to start the program. The program will instruct you which times to enter. Once you have entered a start time, a bed time, and an end time, the application will print out calculated nightly charge, then it will ask you if you would like to continue.
+* To continue, enter "y" or "Y"
+* to stop the application enter any other key
 
 
 
