@@ -21,7 +21,7 @@ The Kata contains 3 projects:
 
 ### Buliding and Running Tests
 
-I've 
+I've included a console application in this Kata that you can use to test the BabySitter class code.
 
 
 
