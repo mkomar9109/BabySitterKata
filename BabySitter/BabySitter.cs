@@ -56,7 +56,6 @@ namespace BabySitterNameSpace
             if (time.ToUpper().Contains("PM"))
             {
                 newTime = newTime.AddDays(-1);
-                    
             }
             return newTime;
         }

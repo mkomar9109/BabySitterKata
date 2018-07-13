@@ -9,8 +9,6 @@ namespace BabySitterConsole
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
             BabySitter obj = new BabySitter();
